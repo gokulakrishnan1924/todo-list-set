@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      header {
+        padding: 0 20px;
+      }
+      header h1 {
+        text-align: center;
+      }
+      header input {
+        padding: 5px;
+        width: 80%;
+        font-size: 16px;
+      }
+      header button {
+        padding: 5px;
+      }
+      .items {
+        margin: 20px 0;
+      }
+      .items li {
+        background: black;
+        color: white;
+        font-size: 17px;
+        padding: 5px;
+        margin: 10px 0;
+        list-style: none;
+      }
+      .btn {
+        background: red;
+        right: 10px;
+        position: absolute;
+        border-radius: 70%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <header>
+        <h1>Todo-list</h1>
+        <input placeholder="Add task..." id="inp" type="text" />
+        <button id="btn" type="submit">ADD</button>
+      </header>
+      <ul class="items"></ul>
+    </div>
+    <script>
+      const btn = document.getElementById("btn");
+      const inp = document.getElementById("inp");
+      const items = document.querySelector(".items");
+      btn.addEventListener("click", (e) => {
+        console.log(e);
+
+        if (inp.value) {
+          const li = document.createElement("li");
+          li.innerText = inp.value;
+
+          const btn2 = document.createElement("button");
+          btn2.innerText = "Del";
+          btn2.classList.add("btn");
+
+          li.appendChild(btn2);
+          items.appendChild(li);
+
+          inp.value = "";
+
+          btn2.addEventListener("click", () => {
+            items.removeChild(li);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
